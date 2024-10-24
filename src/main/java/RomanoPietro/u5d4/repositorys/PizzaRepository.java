@@ -15,4 +15,7 @@ public interface PizzaRepository extends JpaRepository <Pizza, Long> {
     @Query("SELECT p FROM Pizza p WHERE p.price < :price")
     List<Pizza> findPizzasCheaperThan(@Param("price") double price);
 
+
+
+
 }
