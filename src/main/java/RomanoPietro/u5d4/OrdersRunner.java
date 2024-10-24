@@ -96,7 +96,7 @@ public class OrdersRunner implements CommandLineRunner {
         List<Pizza> pizzasCheaperThan = pizzaService.findPizzasCheaperThan(8.0);
 
         pizzasByName.forEach(pizza -> System.out.println("Pizza trovata per nome: " + pizza.getName()));
-        pizzasCheaperThan.forEach(pizza -> System.out.println("Pizza trovata per prezzo: " + pizza.getName()));
+        pizzasCheaperThan.forEach(pizza -> System.out.println("Pizza trovata per prezzo: " + pizza.getPrice() + " con nome: " + pizza.getName()));
 
 
     }
