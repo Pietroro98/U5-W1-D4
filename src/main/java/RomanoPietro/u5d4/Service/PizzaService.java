@@ -21,8 +21,8 @@ public class PizzaService {
         return pizzaRepository.findByName(name);
     }
 
-
-
-
+    public List<Pizza> findPizzasCheaperThan(double price) {
+        return pizzaRepository.findPizzasCheaperThan(price);
+    }
 
 }

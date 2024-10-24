@@ -1,5 +1,7 @@
 package RomanoPietro.u5d4;
 
+import RomanoPietro.u5d4.Service.DrinkService;
+import RomanoPietro.u5d4.Service.PizzaService;
 import RomanoPietro.u5d4.entities.Drinks;
 import RomanoPietro.u5d4.entities.Pizza;
 import RomanoPietro.u5d4.entities.Toppings;
@@ -24,6 +26,12 @@ public class OrdersRunner implements CommandLineRunner {
 
     @Autowired
     private ToppingRepository toppingsRepository;
+
+    @Autowired
+    private DrinkService drinkService;
+
+    @Autowired
+    private PizzaService pizzaService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -58,7 +66,7 @@ public class OrdersRunner implements CommandLineRunner {
         pizzaRepository.save(salamiXl);
 
 
-        Drinks cola = new Drinks("Cola", 150, 2.50);
+        Drinks cola = new Drinks("CocaCola", 150, 2.50);
         Drinks water = new Drinks("Water", 0, 1.00);
         Drinks lemonade = new Drinks("Lemonade", 128, 1.00);
         Drinks beer = new Drinks("Beer", 43, 5.00);
@@ -73,6 +81,22 @@ public class OrdersRunner implements CommandLineRunner {
         pizzaRepository.findAll().forEach(System.out::println);
         drinksRepository.findAll().forEach(System.out::println);
         toppingsRepository.findAll().forEach(System.out::println);
+
+
+        List<Drinks> drinksByName = drinkService.findByName("CocaCola");
+        drinksByName.forEach(drinks -> System.out.println("Drink trovato per nome: " + drinks.getName()));
+
+        List<Drinks> drinksCheaperThan = drinkService.findDrinksCheaperThan(2.0);
+        drinksCheaperThan.forEach(drinks -> System.out.println("Drink trovato per prezzo: " + drinks.getName()));
+
+        List<Toppings> toppingsByName = toppingsRepository.findByName("Tomato");
+        toppingsByName.forEach(toppings -> System.out.println("Topping trovato per nome: " + toppings.getName()));
+
+        List<Pizza> pizzasByName = pizzaService.findByName("Pizza_Margherita");
+        List<Pizza> pizzasCheaperThan = pizzaService.findPizzasCheaperThan(8.0);
+
+        pizzasByName.forEach(pizza -> System.out.println("Pizza trovata per nome: " + pizza.getName()));
+        pizzasCheaperThan.forEach(pizza -> System.out.println("Pizza trovata per prezzo: " + pizza.getName()));
 
 
     }
