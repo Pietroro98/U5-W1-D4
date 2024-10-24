@@ -92,21 +92,21 @@ public class OrdersRunner implements CommandLineRunner {
         drinksByName.forEach(drinks -> System.out.println("Drink trovato per nome: " + drinks.getName() + "| con prezzo: " + drinks.getPrice()));
 
         System.out.println("\n=====================");
-        List<Drinks> drinksCheaperThan = drinkService.findDrinksCheaperThan(2.0);
-        drinksCheaperThan.forEach(drinks -> System.out.println("Drink trovato per prezzo: " + drinks.getName()));
+        List<Drinks> drinksCheaperThan = drinkService.findDrinksCheaperThan(3.0);
+        drinksCheaperThan.forEach(drinks -> System.out.println("Drink trovato per prezzo inferiore : " + drinks.getPrice() + "| con nome: " + drinks.getName()));
 
         System.out.println("\n=====================");
 
         List<Toppings> toppingsByName = toppingsRepository.findByName("Cheese");
-        toppingsByName.forEach(toppings -> System.out.println("Topping trovato per nome: " + toppings.getName() + " con prezzo: " + toppings.getPrice() + " | con calorie: " + toppings.getCalories()));
+        toppingsByName.forEach(toppings -> System.out.println("Topping trovato per nome: " + toppings.getName() + "| con prezzo: " + toppings.getPrice() + " | con calorie: " + toppings.getCalories()));
 
         System.out.println("\n=====================");
 
         List<Pizza> pizzasByName = pizzaService.findByName("Pizza_Margherita");
         List<Pizza> pizzasCheaperThan = pizzaService.findPizzasCheaperThan(8.0);
 
-        pizzasByName.forEach(pizza -> System.out.println("Pizza trovata per nome: " + pizza.getName()));
-        pizzasCheaperThan.forEach(pizza -> System.out.println("Pizza trovata per prezzo: " + pizza.getPrice() + " con nome: " + pizza.getName()));
+        pizzasByName.forEach(pizza -> System.out.println("Pizza trovata per nome: " + pizza.getName() + " | con calorie: " + pizza.getCalories() + "kCal"));
+        pizzasCheaperThan.forEach(pizza -> System.out.println("Pizza trovata per prezzo: " + pizza.getPrice() + "| con nome: " + pizza.getName()));
 
 
     }
