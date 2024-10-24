@@ -88,16 +88,17 @@ public class OrdersRunner implements CommandLineRunner {
         System.out.println("\n=====================");
 
 
-        List<Drinks> drinksByName = drinkService.findByName("CocaCola");
-        drinksByName.forEach(drinks -> System.out.println("Drink trovato per nome: " + drinks.getName()));
+        List<Drinks> drinksByName = drinkService.findByName("Beer");
+        drinksByName.forEach(drinks -> System.out.println("Drink trovato per nome: " + drinks.getName() + "| con prezzo: " + drinks.getPrice()));
 
+        System.out.println("\n=====================");
         List<Drinks> drinksCheaperThan = drinkService.findDrinksCheaperThan(2.0);
         drinksCheaperThan.forEach(drinks -> System.out.println("Drink trovato per prezzo: " + drinks.getName()));
 
         System.out.println("\n=====================");
 
-        List<Toppings> toppingsByName = toppingsRepository.findByName("Tomato");
-        toppingsByName.forEach(toppings -> System.out.println("Topping trovato per nome: " + toppings.getName()));
+        List<Toppings> toppingsByName = toppingsRepository.findByName("Cheese");
+        toppingsByName.forEach(toppings -> System.out.println("Topping trovato per nome: " + toppings.getName() + " con prezzo: " + toppings.getPrice() + " | con calorie: " + toppings.getCalories()));
 
         System.out.println("\n=====================");
 
